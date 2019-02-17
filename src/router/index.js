@@ -64,6 +64,30 @@ export const constantRouterMap = [
     hidden: true
   },
   {
+    path: '/price',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'priceAllocation',
+    meta: {
+      title: '服务价格管理',
+      icon: 'documentation'
+    },
+    children: [
+      {
+        path: '/price/cityPriceAllocation/index',
+        component: () => import('@/views/priceAllocation/cityPrice/index.vue'),
+        name: 'CityPrice',
+        meta: { title: '城市价格配置', noCache: true }
+      },
+      {
+        path: '/price/hospitalPriceAllocation/index',
+        component: () => import('@/views/priceAllocation/hospitalPrice/index.vue'),
+        name: 'HospitalPrice',
+        meta: { title: '医院特价配置', noCache: true }
+      }
+    ]
+  },
+  {
     path: '',
     component: Layout,
     redirect: 'dashboard',
